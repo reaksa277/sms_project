@@ -4,17 +4,23 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDateTime;
+import java.util.List;
+
+
 
 @Entity
-@Table(name = "courses")
+@Table(name = "teachers")
+
 @Data
-public class Courses {
+public class Teacher {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String title;
-    private String description;
-    private String teacher_id;
+    private String first_name;
+    private String last_name;
+    private String email;
+    private String phone;
+    private String department;
     private String hire_date;
 
     @Column(name = "created_at")
@@ -23,8 +29,7 @@ public class Courses {
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "teacher_id")
-    private Teacher teacher;
-
+    @OneToMany(mappedBy = "courses", fetch = FetchType.LAZY,  cascade = CascadeType.ALL)
+    private List<Courses> courses;
 }
+

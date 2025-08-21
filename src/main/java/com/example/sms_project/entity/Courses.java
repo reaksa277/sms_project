@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "courses")
@@ -16,6 +17,9 @@ public class Courses {
     private String description;
     private String teacher_id;
     private String hire_date;
+
+    @OneToMany(mappedBy = "courses", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Enrollment>  enrollment;
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;

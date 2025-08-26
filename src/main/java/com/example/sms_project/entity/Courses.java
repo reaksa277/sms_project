@@ -15,7 +15,6 @@ public class Courses {
     private Long id;
     private String title;
     private String description;
-    private String teacher_id;
     private String hire_date;
 
     @Column(name = "created_at")

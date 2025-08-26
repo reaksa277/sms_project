@@ -42,7 +42,3 @@ public class Parent {
     @JoinColumn(name = "student_id")
     private Student student;
 }
-// when j reaksa commit back i need to pull and then adding
-// @NoArgsConstructor & @AllArgsConstructor to the student
-
-// change from branch main to branch enrollment

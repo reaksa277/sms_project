@@ -16,10 +16,16 @@ public class Student {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "student_name")
     private String studentName;
     private String email;
+
+    @Column(name = "phone_number")
     private String phoneNumber;
+
+    @Column(name = "date_of_birth")
     private Date dateOfBirth;
+
     private String address;
 
     @Column(name = "created_at")

@@ -14,17 +14,19 @@ public class Enrollment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "student_id")
-    private Long studentId;
-
-    @Column(name = "course_id")
-    private Long courseId;
-
     @Column(name = "enrollment_date")
     private Date enrollmentDate;
 
     @Column(name = "enrollment_status")
     private String enrollmentStatus = "ACTIVE";
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "student_id")
+    private Student student;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "course_id")
+    private Courses courses;
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;

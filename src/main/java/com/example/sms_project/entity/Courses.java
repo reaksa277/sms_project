@@ -17,6 +17,9 @@ public class Courses {
     private String description;
     private String hire_date;
 
+    @OneToMany(mappedBy = "courses", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Enrollment>  enrollment;
+
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 

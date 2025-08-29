@@ -38,6 +38,9 @@ public class Student {
         this.updatedAt = LocalDateTime.now();
     }
 
-   // @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
-    //private List<Parent> parent;
+//    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
+//    private List<Parent> parent;
+
+    @OneToMany(mappedBy = "student", fetch = FetchType.LAZY,  cascade = CascadeType.ALL)
+    private List<Enrollment>  enrollment;
 }

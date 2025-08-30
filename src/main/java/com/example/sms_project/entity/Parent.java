@@ -1,32 +1,26 @@
 package com.example.sms_project.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
-import java.util.Date;
-import java.util.List;
 
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Data
-@Table(name = "students")
-public class Student {
+@Table(name = "parents")
+public class Parent {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "student_name")
-    private String studentName;
+    private String parentName;
     private String email;
-
-    @Column(name = "phone_number")
-    private String phoneNumber;
-
-    @Column(name = "date_of_birth")
-    private Date dateOfBirth;
-
-    private String address;
+    private String relationship;
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;
@@ -44,9 +38,7 @@ public class Student {
         this.updatedAt = LocalDateTime.now();
     }
 
-//    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
-//    private List<Parent> parent;
-
-    @OneToMany(mappedBy = "student", fetch = FetchType.LAZY,  cascade = CascadeType.ALL)
-    private List<Enrollment>  enrollment;
+    @ManyToOne
+    @JoinColumn(name = "student_id")
+    private Student student;
 }

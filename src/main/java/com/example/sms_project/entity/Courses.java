@@ -15,7 +15,6 @@ public class Courses {
     private Long id;
     private String title;
     private String description;
-    private String teacher_id;
     private String hire_date;
 
     @OneToMany(mappedBy = "courses", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -26,4 +25,12 @@ public class Courses {
 
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "teacher_id")
+    private Teacher teacher;
+
+    @OneToMany(mappedBy = "enrollment", fetch = FetchType.LAZY,  cascade = CascadeType.ALL)
+    private List<Enrollment> enrollments;
+
 }

@@ -26,7 +26,7 @@ public class Enrollment {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "course_id")
-    private Courses courses;
+    private Courses course;
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;

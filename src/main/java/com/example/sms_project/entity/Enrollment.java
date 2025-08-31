@@ -3,6 +3,7 @@ package com.example.sms_project.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -15,7 +16,7 @@ public class Enrollment {
     private Long id;
 
     @Column(name = "enrollment_date")
-    private Date enrollmentDate;
+    private LocalDate enrollmentDate;
 
     @Column(name = "enrollment_status")
     private String enrollmentStatus = "ACTIVE";

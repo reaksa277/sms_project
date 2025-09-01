@@ -20,6 +20,8 @@ public class StudentDto {
     @JsonProperty("name")
     private String studentName;
 
+    private String studentId;
+
     @Email(message = "Email is needed")
     @NotBlank(message = "Email is required")
     private String email;
@@ -28,7 +30,7 @@ public class StudentDto {
     @JsonProperty("phone_number")
     private String phoneNumber;
 
-    @NotNull(message = "Date of birth is essential")
+    @NotNull(message = "Date of birth is essential you must put it.")
     @JsonFormat(pattern = "yyyy-MM-dd")
     @JsonProperty("date_of_birth")
     private Date dateOfBirth;

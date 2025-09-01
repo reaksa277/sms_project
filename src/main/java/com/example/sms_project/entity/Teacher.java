@@ -29,7 +29,7 @@ public class Teacher {
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
-    @OneToMany(mappedBy = "courses", fetch = FetchType.LAZY,  cascade = CascadeType.ALL)
-    private List<Courses> courses;
+    @OneToMany(mappedBy = "teacher", fetch = FetchType.LAZY,  cascade = CascadeType.ALL)
+    private List<Courses> course;
 }
 

@@ -17,8 +17,8 @@ public class Courses {
     private String description;
     private String hire_date;
 
-    @OneToMany(mappedBy = "courses", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Enrollment>  enrollment;
+    @OneToMany(mappedBy = "course", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Enrollment> enrollment;
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;
@@ -29,8 +29,5 @@ public class Courses {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "teacher_id")
     private Teacher teacher;
-
-    @OneToMany(mappedBy = "enrollment", fetch = FetchType.LAZY,  cascade = CascadeType.ALL)
-    private List<Enrollment> enrollments;
 
 }

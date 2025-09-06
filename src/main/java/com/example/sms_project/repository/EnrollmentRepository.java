@@ -1,10 +1,14 @@
 package com.example.sms_project.repository;
 
 import com.example.sms_project.entity.Enrollment;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Collection;
+import java.util.List;
+
 @Repository
 public interface EnrollmentRepository extends JpaRepository<Enrollment,Long> {
-
+    List<Enrollment> findByStudentIdIn(List<Long> studentIds, Sort createdAt);
 }

@@ -11,4 +11,5 @@ import java.util.List;
 public interface EnrollmentRepository extends JpaRepository<Enrollment,Long> {
     // SELECT * from enrollment where student_id IN (1, 3) ORDER BY <sorting_param>
     List<Enrollment> findByStudentIdIn(List<Long> studentIds, Sort createdAt);
+    List<Enrollment> findByCourseIdIn(List<Long> courseIds, Sort createdAt);
 }

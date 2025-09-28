@@ -3,6 +3,7 @@ package com.example.sms_project.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -15,7 +16,7 @@ public class Enrollment {
     private Long id;
 
     @Column(name = "enrollment_date")
-    private Date enrollmentDate;
+    private LocalDate enrollmentDate;
 
     @Column(name = "enrollment_status")
     private String enrollmentStatus = "ACTIVE";
@@ -33,4 +34,14 @@ public class Enrollment {
 
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
+
+    @PrePersist
+    private void prePersist() {
+        this.createdAt = LocalDateTime.now();
+    }
+
+    @PreUpdate
+    private void preUpdate() {
+        this.updatedAt = LocalDateTime.now();
+    }
 }

@@ -46,4 +46,13 @@ public class EnrollmentMapper {
                 .map(enrollment -> this.toDto(enrollment))
                 .collect(Collectors.toList());
     }
+
+    public void updateEntityFromDto(Enrollment entity, EnrollmentDto dto) {
+        if (entity == null ||  dto == null) {
+            return;
+        }
+
+        entity.setEnrollmentDate(dto.getEnrollmentDate());
+        entity.setEnrollmentStatus(dto.getEnrollmentStatus());
+    }
 }

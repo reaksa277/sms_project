@@ -37,7 +37,7 @@ public class Response {
         return new Response(code, message, description);
     }
 
-    private static Response success(String code,  String message, String description, Object data) {
+    public static Response success(String code, String message, String description, Object data) {
         return new Response(code, message, description, data);
     }
 

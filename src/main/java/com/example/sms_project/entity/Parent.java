@@ -18,7 +18,12 @@ public class Parent {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "parent_name")
     private String parentName;
+
+    @Column(name = "phone_number")
+    private String phoneNumber;
+
     private String email;
     private String relationship;
 

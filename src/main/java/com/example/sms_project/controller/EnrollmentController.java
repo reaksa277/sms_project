@@ -5,6 +5,7 @@ import com.example.sms_project.dto.enrollment.EnrollmentDto;
 import com.example.sms_project.dto.enrollment.EnrollmentResponseDto;
 import com.example.sms_project.model.BaseResponseModel;
 import com.example.sms_project.service.EnrollmentService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,7 +28,7 @@ public class EnrollmentController {
     }
 
     @PostMapping
-    public ResponseEntity<Response> createEnrollment(@RequestBody EnrollmentDto payload) {
+    public ResponseEntity<Response> createEnrollment(@Valid @RequestBody EnrollmentDto payload) {
         enrollmentService.createEnrollment(payload);
 
         return ResponseEntity.status(HttpStatus.CREATED)
@@ -35,7 +36,7 @@ public class EnrollmentController {
     }
 
     @PutMapping("/{enrollment_id}")
-    public ResponseEntity<Response> updateEnrollment(@PathVariable("enrollment_id") Long enrollmentId, @RequestBody EnrollmentDto payload) {
+    public ResponseEntity<Response> updateEnrollment(@PathVariable("enrollment_id") Long enrollmentId, @Valid @RequestBody EnrollmentDto payload) {
         enrollmentService.updateEnrollment(enrollmentId, payload);
 
         return ResponseEntity.status(HttpStatus.OK)

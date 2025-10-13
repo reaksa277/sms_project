@@ -54,6 +54,5 @@ public class StudentMapper {
         entity.setEmail(dto.getEmail());
         entity.setAddress(dto.getAddress());
         entity.setPhoneNumber(dto.getPhoneNumber());
-        entity.setDateOfBirth(dto.getDateOfBirth());
     }
 }

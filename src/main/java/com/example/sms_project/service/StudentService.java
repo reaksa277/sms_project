@@ -44,9 +44,6 @@ public class StudentService {
     }
 
     public ResponseEntity<BaseResponseModel> createStudent(StudentDto payload) {
-        if (studentRepository.existsByStudentName(payload.getStudentName())) {
-            throw new DuplicateResourceException("Student name already exists");
-        }
 
         if (studentRepository.existsByEmail(payload.getEmail())) {
             throw new DuplicateResourceException("Email already exists");

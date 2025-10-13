@@ -49,4 +49,7 @@ public class Student {
 
     @OneToMany(mappedBy = "student", fetch = FetchType.LAZY,  cascade = CascadeType.ALL)
     private List<Enrollment>  enrollment;
+
+    @OneToMany(mappedBy = "student", fetch = FetchType.LAZY,  cascade = CascadeType.ALL)
+    private List<Parent>  parents;
 }

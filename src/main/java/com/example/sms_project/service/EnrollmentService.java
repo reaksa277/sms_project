@@ -8,7 +8,6 @@ import com.example.sms_project.entity.Student;
 import com.example.sms_project.exception.model.ResourceNotFoundException;
 import com.example.sms_project.mapper.EnrollmentMapper;
 import com.example.sms_project.model.BaseResponseModel;
-import com.example.sms_project.model.BaseResponseWithDataModel;
 import com.example.sms_project.repository.EnrollmentRepository;
 import com.example.sms_project.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,16 +29,13 @@ public class EnrollmentService {
     @Autowired
     private EnrollmentMapper mapper;
 
-    public ResponseEntity<BaseResponseWithDataModel> listEnrollments() {
+    public List<EnrollmentResponseDto> listEnrollments() {
         List<Enrollment> enrollments = enrollmentRepository.findAll();
 
-        List<EnrollmentResponseDto> dtos = mapper.toListDto(enrollments);
-
-        return ResponseEntity.status(HttpStatus.OK)
-                .body(new BaseResponseWithDataModel("success", "successfully list enrollments", dtos));
+        return mapper.toListDto(enrollments);
     }
 
-    public ResponseEntity<BaseResponseModel> createEnrollment(@RequestBody EnrollmentDto enrollment) {
+    public void createEnrollment(EnrollmentDto enrollment) {
         Student existingStudent = studentRepository.findById(enrollment.getStudentId())
                 .orElseThrow(() -> new ResourceNotFoundException("Student not found with id: " + enrollment.getStudentId()));
 
@@ -48,8 +44,21 @@ public class EnrollmentService {
         Enrollment enrollmentEntity = mapper.toEntity(enrollment, existingStudent);
 
         enrollmentRepository.save(enrollmentEntity);
+    }
 
-        return ResponseEntity.status(HttpStatus.CREATED)
-                .body(new BaseResponseModel("success", "enrollment created"));
+    public void updateEnrollment(Long enrollmentId, EnrollmentDto enrollment) {
+        Enrollment existing = enrollmentRepository.findById(enrollmentId)
+                .orElseThrow(() -> new ResourceNotFoundException("Enrollment not found with id: " + enrollmentId));
+
+        mapper.updateEntityFromDto(existing, enrollment);
+        enrollmentRepository.save(existing);
+    }
+
+    public void deleteEnrollment(Long enrollmentId) {
+        if (!enrollmentRepository.existsById(enrollmentId)) {
+            throw new ResourceNotFoundException("Enrollment not found with id: " + enrollmentId);
+        }
+
+        enrollmentRepository.deleteById(enrollmentId);
     }
 }

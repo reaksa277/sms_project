@@ -18,7 +18,12 @@ public class Parent {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "parent_name")
     private String parentName;
+
+    @Column(name = "phone_number")
+    private String phoneNumber;
+
     private String email;
     private String relationship;
 
@@ -38,7 +43,7 @@ public class Parent {
         this.updatedAt = LocalDateTime.now();
     }
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "student_id")
     private Student student;
 }

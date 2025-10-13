@@ -1,5 +1,6 @@
 package com.example.sms_project.dto.parent;
 
+import com.example.sms_project.dto.student.StudentNestedDto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;

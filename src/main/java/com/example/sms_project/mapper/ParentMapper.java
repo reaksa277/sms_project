@@ -3,6 +3,7 @@ package com.example.sms_project.mapper;
 import com.example.sms_project.dto.parent.ParentDto;
 import com.example.sms_project.dto.parent.ParentResponseDto;
 import com.example.sms_project.dto.parent.UpdateParentDto;
+import com.example.sms_project.dto.student.StudentNestedDto;
 import com.example.sms_project.entity.Parent;
 import com.example.sms_project.entity.Student;
 import org.springframework.stereotype.Component;

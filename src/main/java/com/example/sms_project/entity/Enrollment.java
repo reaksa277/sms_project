@@ -15,6 +15,7 @@ public class Enrollment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+
     @Column(name = "enrollment_date")
     private LocalDate enrollmentDate;
 
